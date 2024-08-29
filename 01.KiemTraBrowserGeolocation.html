@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <title>Get the Location</title>
+
+    <script type="text/javascript">
+
+        function getLocation()
+        {
+            if (navigator.geolocation)
+            {
+                navigator.geolocation.getCurrentPosition(successfulPosition);
+            }
+            else
+            {
+                document.getElementById("result").innerHTML = "Your browser does not support HTML5 Geolocation";
+            }
+        }
+
+        function successfulPosition(location) {
+            //Lấy vị trí kinh độ và vĩ độ hiện tại
+            var lat = location.coords.latitude;
+            var long = location.coords.longitude;
+            document.getElementById("result").innerHTML = "Latitude: " + lat +
+            "<br />Longitude: " + long;
+            alert("Altitude: " + location.coords.altitude);
+            alert("Accuracy: " + location.coords.accuracy);
+            alert("Altitude Accuracy: " + location.coords.altitudeAccuracy);
+            alert("Direction: " + location.coords.heading);
+            alert("Speed: " + location.coords.speed);
+            alert("Time: " + location.timestamp);
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div id="result"></div>
+
+    <button id="getPosition" onclick="getLocation();">Get Position</button>
+
+</body>
+
+</html>
